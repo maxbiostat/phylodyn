@@ -419,7 +419,7 @@ infer_coal_deriv <- function(samp_times, coal_times, n_sampled = NULL, lengthout
   data <- with(coal_data, data.frame(y = event, time = time, E_log = E_log))
   if(pc_prior){
     hyper <- list(prec = list(prior="pc.prec", param = c(prec_S, prec_p)))
-  }{
+  }else{
     hyper <- list(prec = list(param = c(prec_alpha, prec_beta)))
   }
   formula <- y ~ -1 + f(time, model="rw1", hyper = hyper, constr = FALSE) + offset(data$E_log)
