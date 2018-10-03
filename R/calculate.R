@@ -82,6 +82,7 @@ BNPR <- function(data, lengthout = 100, pref=FALSE, prec_alpha=0.01,
   result <- infer_coal_samp(samp_times = phy$samp_times, coal_times = phy$coal_times,
                             n_sampled = phy$n_sampled, fns = fns, lengthout = lengthout,
                             prec_alpha = prec_alpha, prec_beta = prec_beta,
+                            prec_S = prec_S, prec_p = prec_p, pc_prior = pc_prior,
                             beta1_prec = beta1_prec, use_samp = pref, log_fns = log_fns,
                             simplify = simplify, derivative = derivative)
   
@@ -136,6 +137,7 @@ BNPR_PS <- function(data, lengthout = 100, prec_alpha=0.01, prec_beta=0.01,
 {
   return(BNPR(data = data, lengthout = lengthout, pref = TRUE,
               prec_alpha = prec_alpha, prec_beta = prec_beta,
+              prec_S = prec_S, prec_p = prec_p, pc_prior = pc_prior,
               beta1_prec = beta1_prec, fns = fns, log_fns = log_fns,
               simplify = simplify, derivative = derivative, forward = forward))
 }
@@ -189,7 +191,7 @@ condense_stats <- function(time, event, E, log_zero = -100)
 
 infer_coal <- function(samp_times, coal_times, n_sampled = NULL, lengthout = 100,
                        prec_alpha = 0.01, prec_beta = 0.01, simplify = FALSE,
-                       prec_S = 1, prec_p = 0.1, pc_prior = "FALSE",
+                       prec_S = 1, prec_p = 0.1, pc_prior = FALSE,
                        derivative = FALSE)
 {
   if (!requireNamespace("INLA", quietly = TRUE)) {
@@ -288,7 +290,7 @@ joint_stats <- function(coal_data, samp_data)
 
 infer_coal_samp <- function(samp_times, coal_times, n_sampled=NULL, fns = NULL,
                             lengthout=100, prec_alpha=0.01, prec_beta=0.01,
-                            prec_S = 1, prec_p = 0.1, pc_prior = "FALSE",
+                            prec_S = 1, prec_p = 0.1, pc_prior = FALSE,
                             beta1_prec=0.001, use_samp = FALSE, log_fns = TRUE,
                             simplify = FALSE, events_only = FALSE,
                             derivative = FALSE)
@@ -390,7 +392,7 @@ infer_coal_samp <- function(samp_times, coal_times, n_sampled=NULL, fns = NULL,
 }
 
 infer_coal_deriv <- function(samp_times, coal_times, n_sampled = NULL, lengthout = 100,
-                             prec_alpha = 0.01, prec_beta = 0.01, prec_S = 1, prec_p = 0.1, pc_prior = "FALSE",
+                             prec_alpha = 0.01, prec_beta = 0.01, prec_S = 1, prec_p = 0.1, pc_prior = FALSE,
                              simplify = FALSE)
 {
   if (!requireNamespace("INLA", quietly = TRUE)) {
@@ -440,7 +442,7 @@ infer_coal_deriv <- function(samp_times, coal_times, n_sampled = NULL, lengthout
 }
 
 infer_samp_exper <- function(samp_times, fns, n_sampled = NULL, lengthout = 100,
-                             prec_alpha = 0.01, prec_beta = 0.01, prec_S = 1, prec_p = 0.1, pc_prior = "FALSE")
+                             prec_alpha = 0.01, prec_beta = 0.01, prec_S = 1, prec_p = 0.1, pc_prior = FALSE)
 {
   if (!requireNamespace("INLA", quietly = TRUE)) {
     stop('INLA needed for this function to work. Use install.packages("INLA", repos="https://www.math.ntnu.no/inla/R/stable").',
@@ -477,7 +479,7 @@ infer_samp_exper <- function(samp_times, fns, n_sampled = NULL, lengthout = 100,
 
 infer_coal_samp_exper <- function(samp_times, coal_times, n_sampled=NULL, fns = NULL,
                                   lengthout=100, prec_alpha=0.01, prec_beta=0.01,
-                                  prec_S = 1, prec_p = 0.1, pc_prior = "FALSE",
+                                  prec_S = 1, prec_p = 0.1, pc_prior = FALSE,
                                   beta1_prec=0.001, use_samp = FALSE, log_fns = TRUE,
                                   simplify = FALSE, events_only = FALSE)
 {
@@ -538,7 +540,7 @@ infer_coal_samp_exper <- function(samp_times, coal_times, n_sampled=NULL, fns = 
 }
 
 infer_samp <- function(samp_times, n_sampled = NULL, lengthout = 100, grid = NULL,
-                       prec_alpha = 0.01, prec_beta = 0.01, prec_S = 1, prec_p = 0.1, pc_prior = "FALSE")
+                       prec_alpha = 0.01, prec_beta = 0.01, prec_S = 1, prec_p = 0.1, pc_prior = FALSE)
 {
   if (!requireNamespace("INLA", quietly = TRUE)) {
     stop('INLA needed for this function to work. Use install.packages("INLA", repos="https://www.math.ntnu.no/inla/R/stable").',
@@ -582,7 +584,7 @@ infer_samp <- function(samp_times, n_sampled = NULL, lengthout = 100, grid = NUL
 #' 
 #' @examples
 BNPR_samp_only <- function(data, lengthout = 100, grid = NULL, tmrca = NULL,
-                           prec_alpha = 0.01, prec_beta = 0.01)
+                           prec_alpha = 0.01, prec_beta = 0.01, prec_S = 1, prec_p = 0.1, pc_prior = FALSE)
 {
   if (class(data) == "phylo")
   {
@@ -605,7 +607,8 @@ BNPR_samp_only <- function(data, lengthout = 100, grid = NULL, tmrca = NULL,
   
   foo <- infer_samp(samp_times = phy$samp_times, n_sampled = phy$n_sampled, 
                        lengthout = lengthout, grid = grid,
-                       prec_alpha = prec_alpha, prec_beta = prec_beta)
+                       prec_alpha = prec_alpha, prec_beta = prec_beta,
+                       prec_S = prec_S, prec_p = prec_p, pc_prior = pc_prior)
   
   quants <- foo$result$summary.random$time
   beta0 <- foo$result$summary.fixed$`0.5quant`
