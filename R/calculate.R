@@ -34,7 +34,9 @@ gen_summary = function(coal_times, samp_times, n_sampled)
 #' @param lengthout numeric specifying number of grid points.
 #' @param pref logical. Should the preferential sampling model be used?
 #' @param prec_alpha,prec_beta numerics specifying gamma prior for precision 
+#'  \eqn{\kappa}.
 #' @param prec_S,prec_p numerics specifying Gumbel type II PC prior for precision
+#'  \eqn{\kappa}.
 #' @param pc_prior boolean specifying whether to use the PC prior for the precision
 #'   \eqn{\kappa}.
 #' @param beta1_prec numeric specifying precision for normal prior on 
@@ -576,8 +578,10 @@ infer_samp <- function(samp_times, n_sampled = NULL, lengthout = 100, grid = NUL
 #'   \code{samp_times} and number sampled per sampling time \code{n_sampled}.
 #' @param lengthout numeric specifying number of grid points.
 #' @param grid numeric vector of endpoints of the latent field.
-#' @param prec_alpha,prec_beta numerics specifying gamma prior for precision 
+#' @param prec_alpha,prec_beta numerics specifying gamma prior for precision
+#'   \eqn{\kappa}. 
 #' @param prec_S,prec_p numerics specifying Gumbel type II PC prior for precision
+#'   \eqn{\kappa}.
 #' @param pc_prior boolean specifying whether to use the PC prior for the precision
 #'   \eqn{\kappa}.
 #'   
