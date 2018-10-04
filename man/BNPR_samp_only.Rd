@@ -5,7 +5,8 @@
 \title{Nonparametric estimate of sampling intensity}
 \usage{
 BNPR_samp_only(data, lengthout = 100, grid = NULL, tmrca = NULL,
-  prec_alpha = 0.01, prec_beta = 0.01)
+  prec_alpha = 0.01, prec_beta = 0.01, prec_S = 1, prec_p = 0.1,
+  pc_prior = FALSE)
 }
 \arguments{
 \item{data}{\code{phylo} object or list containing vectors of sampling times
@@ -15,10 +16,13 @@ BNPR_samp_only(data, lengthout = 100, grid = NULL, tmrca = NULL,
 
 \item{grid}{numeric vector of endpoints of the latent field.}
 
-\item{prec_alpha, prec_beta}{numerics specifying gamma prior for precision 
+\item{prec_alpha, prec_beta}{numerics specifying gamma prior for precision}
+
+\item{prec_S, prec_p}{numerics specifying Gumbel type II PC prior for precision}
+
+\item{pc_prior}{boolean specifying whether to use the PC prior for the precision
 \eqn{\kappa}.}
 }
 \description{
 Nonparametric estimate of sampling intensity
 }
-

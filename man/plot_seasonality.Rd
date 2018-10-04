@@ -6,19 +6,21 @@
 \usage{
 plot_seasonality(BEAST_out, zero_date, start = 0, years = NULL,
   period = 1, ylim = NULL, nbreaks = 40, lty = 1, lwd = 2,
-  col_years = "gray", col_median = "black", main = "", axlabs = NULL,
-  xlab = "Time", xmarline = 1, ylab = "Effective Population Size",
-  log_y = TRUE, samp_times = NULL, n_sampled = NULL, heatmaps = TRUE,
-  heatmap_labels = TRUE, heatmap_labels_side = "right", heatmap_width = 7,
-  legend = NULL, yscale = 1, ...)
+  col_years = "gray", col_median = "black", main = "",
+  axlabs = NULL, xlab = "Time", xmarline = 1,
+  ylab = "Effective Population Size", log_y = TRUE,
+  samp_times = NULL, n_sampled = NULL, heatmaps = TRUE,
+  heatmap_labels = TRUE, heatmap_labels_side = "right",
+  heatmap_width = 7, legend = NULL, yscale = 1, ...)
 
 plot_seasonality(BEAST_out, zero_date, start = 0, years = NULL,
   period = 1, ylim = NULL, nbreaks = 40, lty = 1, lwd = 2,
-  col_years = "gray", col_median = "black", main = "", axlabs = NULL,
-  xlab = "Time", xmarline = 1, ylab = "Effective Population Size",
-  log_y = TRUE, samp_times = NULL, n_sampled = NULL, heatmaps = TRUE,
-  heatmap_labels = TRUE, heatmap_labels_side = "right", heatmap_width = 7,
-  legend = NULL, yscale = 1, ...)
+  col_years = "gray", col_median = "black", main = "",
+  axlabs = NULL, xlab = "Time", xmarline = 1,
+  ylab = "Effective Population Size", log_y = TRUE,
+  samp_times = NULL, n_sampled = NULL, heatmaps = TRUE,
+  heatmap_labels = TRUE, heatmap_labels_side = "right",
+  heatmap_width = 7, legend = NULL, yscale = 1, ...)
 }
 \arguments{
 \item{BEAST_out}{list containing `midpts`, `medianEffPop`, `q975EffPop`, and `q025EffPop`.}
@@ -128,4 +130,3 @@ Plot Seasonality
 
 Plot seasonal overlays
 }
-

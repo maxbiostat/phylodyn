@@ -4,7 +4,8 @@
 \alias{logistic_traj}
 \title{Seasonal logistic trajectory}
 \usage{
-logistic_traj(t, offset = 0, a = 2, period = 12, min = 10, max = 100)
+logistic_traj(t, offset = 0, a = 2, period = 12, min = 10,
+  max = 100)
 }
 \arguments{
 \item{t}{numeric vector of times at which to evaluate the trajectory 
@@ -26,4 +27,3 @@ Seasonal logistic trajectory
 \examples{
 unif_traj(0:12)
 }
-

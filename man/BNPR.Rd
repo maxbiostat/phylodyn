@@ -6,12 +6,14 @@
 \title{Bayesian nonparametric phylodynamic reconstruction.}
 \usage{
 BNPR(data, lengthout = 100, pref = FALSE, prec_alpha = 0.01,
-  prec_beta = 0.01, beta1_prec = 0.001, fns = NULL, log_fns = TRUE,
-  simplify = TRUE, derivative = FALSE, forward = TRUE)
+  prec_beta = 0.01, beta1_prec = 0.001, prec_S = 1, prec_p = 0.1,
+  pc_prior = FALSE, fns = NULL, log_fns = TRUE, simplify = TRUE,
+  derivative = FALSE, forward = TRUE)
 
 BNPR_PS(data, lengthout = 100, prec_alpha = 0.01, prec_beta = 0.01,
-  beta1_prec = 0.001, fns = NULL, log_fns = TRUE, simplify = TRUE,
-  derivative = FALSE, forward = TRUE)
+  prec_S = 1, prec_p = 0.1, pc_prior = FALSE, beta1_prec = 0.001,
+  fns = NULL, log_fns = TRUE, simplify = TRUE, derivative = FALSE,
+  forward = TRUE)
 }
 \arguments{
 \item{data}{\code{phylo} object or list containing vectors of coalescent 
@@ -22,11 +24,15 @@ sampled per sampling time \code{n_sampled}.}
 
 \item{pref}{logical. Should the preferential sampling model be used?}
 
-\item{prec_alpha, prec_beta}{numerics specifying gamma prior for precision 
-\eqn{\kappa}.}
+\item{prec_alpha, prec_beta}{numerics specifying gamma prior for precision}
 
 \item{beta1_prec}{numeric specifying precision for normal prior on 
 \eqn{\beta_1}.}
+
+\item{prec_S, prec_p}{numerics specifying Gumbel type II PC prior for precision}
+
+\item{pc_prior}{boolean specifying whether to use the PC prior for the precision
+\eqn{\kappa}.}
 
 \item{fns}{list containing functions of covariates.}
 
@@ -59,6 +65,7 @@ Bayesian nonparametric phylodynamic reconstruction.
 \itemize{
 \item \code{BNPR_PS}: Uses preferential sampling model.
 }}
+
 \examples{
 data("NY_flu")
 if (requireNamespace("INLA", quietly = TRUE)) {
@@ -66,4 +73,3 @@ if (requireNamespace("INLA", quietly = TRUE)) {
  plot_BNPR(res)
 }
 }
-
