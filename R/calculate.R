@@ -199,7 +199,7 @@ infer_coal <- function(samp_times, coal_times, n_sampled = NULL, lengthout = 100
                        derivative = FALSE)
 {
   if (!requireNamespace("INLA", quietly = TRUE)) {
-    stop('INLA needed for this function to work. Use install.packages("INLA", repos="https://www.math.ntnu.no/inla/R/stable").',
+    stop('INLA needed for this function to work. Use install.packages("INLA", repos=c(getOption("repos"), INLA="https://inla.r-inla-download.org/R/stable"), dep=TRUE).',
          call. = FALSE)
   }
   
@@ -300,7 +300,7 @@ infer_coal_samp <- function(samp_times, coal_times, n_sampled=NULL, fns = NULL,
                             derivative = FALSE)
 {
   if (!requireNamespace("INLA", quietly = TRUE)) {
-    stop('INLA needed for this function to work. Use install.packages("INLA", repos="https://www.math.ntnu.no/inla/R/stable").',
+    stop('INLA needed for this function to work. Use install.packages("INLA", repos=c(getOption("repos"), INLA="https://inla.r-inla-download.org/R/stable"), dep=TRUE).',
          call. = FALSE)
   }
   
@@ -400,7 +400,7 @@ infer_coal_deriv <- function(samp_times, coal_times, n_sampled = NULL, lengthout
                              simplify = FALSE)
 {
   if (!requireNamespace("INLA", quietly = TRUE)) {
-    stop('INLA needed for this function to work. Use install.packages("INLA", repos="https://www.math.ntnu.no/inla/R/stable").',
+    stop('INLA needed for this function to work. Use install.packages("INLA", repos=c(getOption("repos"), INLA="https://inla.r-inla-download.org/R/stable"), dep=TRUE).',
          call. = FALSE)
   }
   
@@ -449,7 +449,7 @@ infer_samp_exper <- function(samp_times, fns, n_sampled = NULL, lengthout = 100,
                              prec_alpha = 0.01, prec_beta = 0.01, prec_S = 1, prec_p = 0.1, pc_prior = FALSE)
 {
   if (!requireNamespace("INLA", quietly = TRUE)) {
-    stop('INLA needed for this function to work. Use install.packages("INLA", repos="https://www.math.ntnu.no/inla/R/stable").',
+    stop('INLA needed for this function to work. Use install.packages("INLA", repos=c(getOption("repos"), INLA="https://inla.r-inla-download.org/R/stable"), dep=TRUE).',
          call. = FALSE)
   }
   
@@ -488,7 +488,7 @@ infer_coal_samp_exper <- function(samp_times, coal_times, n_sampled=NULL, fns = 
                                   simplify = FALSE, events_only = FALSE)
 {
   if (!requireNamespace("INLA", quietly = TRUE)) {
-    stop('INLA needed for this function to work. Use install.packages("INLA", repos="https://www.math.ntnu.no/inla/R/stable").',
+    stop('INLA needed for this function to work. Use install.packages("INLA", repos=c(getOption("repos"), INLA="https://inla.r-inla-download.org/R/stable"), dep=TRUE).',
          call. = FALSE)
   }
   
@@ -547,7 +547,7 @@ infer_samp <- function(samp_times, n_sampled = NULL, lengthout = 100, grid = NUL
                        prec_alpha = 0.01, prec_beta = 0.01, prec_S = 1, prec_p = 0.1, pc_prior = FALSE)
 {
   if (!requireNamespace("INLA", quietly = TRUE)) {
-    stop('INLA needed for this function to work. Use install.packages("INLA", repos="https://www.math.ntnu.no/inla/R/stable").',
+    stop('INLA needed for this function to work. Use install.packages("INLA", repos=c(getOption("repos"), INLA="https://inla.r-inla-download.org/R/stable"), dep=TRUE).',
          call. = FALSE)
   }
   
