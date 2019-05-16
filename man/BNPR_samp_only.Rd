@@ -16,13 +16,10 @@ BNPR_samp_only(data, lengthout = 100, grid = NULL, tmrca = NULL,
 
 \item{grid}{numeric vector of endpoints of the latent field.}
 
+\item{tmrca}{numeric optional value to specify end of grid. Useful for having
+the same grid as a coalescent inference.}
+
 \item{prec_alpha, prec_beta}{numerics specifying gamma prior for precision
-\eqn{\kappa}.}
-
-\item{prec_S, prec_p}{numerics specifying Gumbel type II PC prior for precision
-\eqn{\kappa}.}
-
-\item{pc_prior}{boolean specifying whether to use the PC prior for the precision
 \eqn{\kappa}.}
 }
 \description{

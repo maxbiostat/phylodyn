@@ -16,6 +16,12 @@ added to \code{t} to allow \code{t=0} to represent a different point in the
 cycle.}
 
 \item{a}{numeric slopedness parameter.}
+
+\item{period}{numeric how much time passes before the cycle repeats.}
+
+\item{min}{numeric the smallest value of the cycle.}
+
+\item{max}{numeric the greatest value of the cycle.}
 }
 \value{
 A vector containing a value of \code{level} for every element in
